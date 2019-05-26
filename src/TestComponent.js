@@ -15,8 +15,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const classes = useStyles();
-
 export default class extends Component {
     state = {
         podStatus: {}
@@ -60,6 +58,7 @@ export default class extends Component {
     }
     
     render() {
+        const classes = useStyles();
         return (
             <div>
                 <Table podStatus={this.state.podStatus}/>
