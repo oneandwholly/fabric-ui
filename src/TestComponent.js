@@ -49,7 +49,9 @@ export default class extends Component {
         return (
             <div>
                 {Object.keys(this.state.podStatus).map(podName => {
-                    return <div>{podName}</div>
+                    return <div>{podName}: {this.state.podStatus[podName].map((event) => {
+                        return <span>{event.object.status.phase}</span>
+                    })}</div>
                 })}
                 <Table />
                 <button 
