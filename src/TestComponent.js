@@ -17,7 +17,6 @@ export default class extends Component {
     render() {
         return (
             <div>
-                <div>current pods status</div>
                 {Object.keys(this.state.podStatus).map(podName => {
                     return <div>{podName}</div>
                 })}
