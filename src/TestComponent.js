@@ -15,6 +15,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const ButtonWrapper = (props, children) => {
+    const classes = useStyles();
+
+    return <Button className={classes.button} {...props}>{...children}</Button>
+}
+
 export default class extends Component {
     state = {
         podStatus: {}
@@ -58,11 +64,10 @@ export default class extends Component {
     }
     
     render() {
-        const classes = useStyles();
         return (
             <div>
                 <Table podStatus={this.state.podStatus}/>
-                <Button 
+                <ButtonWrapper 
                     onClick={async () => {
                         try {
                             const res = await axios.post('/api/deployment/fib-calculator')
@@ -71,11 +76,11 @@ export default class extends Component {
                             console.log({ err })
                         }
                     }}
-                    variant="contained" className={classes.button}
+                    variant="contained"
                 >
                     Deploy
-                </Button>
-                <Button 
+                </ButtonWrapper>
+                <ButtonWrapper 
                     onClick={async () => {
                         try {
                             const res = await axios.delete('/api/deployment/fib-calculator')
@@ -84,10 +89,10 @@ export default class extends Component {
                             console.log({ err })
                         }
                     }}
-                    variant="contained" color="secondary" className={classes.button}
+                    variant="contained" color="secondary"
                 >
                     Destroy
-                </Button>
+                </ButtonWrapper>
             </div>
         );
     }
