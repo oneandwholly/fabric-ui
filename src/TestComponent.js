@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ButtonWrapper = (props, children) => {
+const ButtonWrapper = (props) => {
     const classes = useStyles();
 
     return <Button className={classes.button} {...props}></Button>
