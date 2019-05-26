@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import socket from './socket'
+import Table from './Table'
 
 export default class extends Component {
     state = {
@@ -50,6 +51,7 @@ export default class extends Component {
                 {Object.keys(this.state.podStatus).map(podName => {
                     return <div>{podName}</div>
                 })}
+                <Table />
                 <button 
                     onClick={async () => {
                         try {
