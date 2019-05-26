@@ -15,7 +15,7 @@ export default class extends Component {
         })
 
         socket.on('message', ({ type, payload }) => {
-            if (type === 'pod-status-data') {
+            if (type === 'pod-status-event') {
                 console.log({ payload })
             }
         })
