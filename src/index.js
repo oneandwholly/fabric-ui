@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import io from 'socket.io-client'
+const socket = io();
+
+io.on('connection', (socket) => {
+    console.log('connected')
+  });
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
