@@ -3,11 +3,38 @@ import axios from 'axios';
 
 export default class extends Component {
     async componentDidMount() {
-        const res = await axios.get('/api/ping')
-        console.log({ res })
+        // const res = await axios.get('/api/ping')
+        // console.log({ res })
     }
     
     render() {
-        return <div>TestComponent</div>
+        return (
+            <div>
+                <button 
+                    onClick={async () => {
+                        try {
+                            const res = await axios.post('/api/deployment/fib-calculator')
+                            console.log({ res })
+                        } catch(err) {
+                            console.log({ err })
+                        }
+                    }}
+                >
+                    deploy
+                </button>
+                <button 
+                    onClick={async () => {
+                        try {
+                            const res = await axios.delete('/api/deployment/fib-calculator')
+                            console.log({ res })
+                        } catch(err) {
+                            console.log({ err })
+                        }
+                    }}
+                >
+                    delete
+                </button>
+            </div>
+        );
     }
 }
