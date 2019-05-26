@@ -14,7 +14,7 @@ export default class extends Component {
             podStatus: res.data.data.podStatus
         })
 
-        socket.on('pod-status-data', (data) => {
+        socket.on('message', (data) => {
             console.log({ data })
         })
     }
