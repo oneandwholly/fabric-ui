@@ -2,14 +2,25 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class extends Component {
+    state = {
+        podStatus: {}
+    };
+
     async componentDidMount() {
-        // const res = await axios.get('/api/ping')
-        // console.log({ res })
+        const res = await axios.get('/api/status/pods/current')
+        console.log({ res })
+        this.setState({
+            podStatus: res.data.podStatus
+        })
     }
     
     render() {
         return (
             <div>
+                <div>current pods status:</div>
+                {Object.keys(this.state.podStatus).map(podName => {
+                    return <div>{podName}</div>
+                })}
                 <button 
                     onClick={async () => {
                         try {
