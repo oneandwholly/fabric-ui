@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 const ButtonWrapper = (props, children) => {
     const classes = useStyles();
 
-    return <Button className={classes.button} {...props}>{children}</Button>
+    return <Button className={classes.button} {...props}></Button>
 }
 
 export default class extends Component {
