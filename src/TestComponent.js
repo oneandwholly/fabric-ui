@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class extends Component {
     async componentDidMount() {
-        const res = await axios.get('/ping')
+        const res = await axios.get('/api/ping')
         console.log({ res })
     }
     
