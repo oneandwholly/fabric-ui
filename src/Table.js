@@ -28,7 +28,6 @@ function SimpleTable(props) {
           <TableRow>
             <TableCell>Pod Name</TableCell>
             <TableCell align="right">Status</TableCell>
-            <TableCell align="right">...</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
