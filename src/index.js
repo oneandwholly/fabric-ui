@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import io from 'socket.io-client'
 const socket = io();
 
-io.on('connection', (socket) => {
+socket.on('connection', (socket) => {
     console.log('connected')
   });
 
