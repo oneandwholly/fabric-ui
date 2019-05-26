@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import io from 'socket.io-client'
+const socket = io();
+
+socket.on('connect', (socket) => {
+    console.log('connected')
+  });
 
 export default class extends Component {
     state = {
@@ -11,6 +17,9 @@ export default class extends Component {
         console.log({ res })
         this.setState({
             podStatus: res.data.data.podStatus
+        })
+        socket.on('pod-status-event', (event) => {
+            console.log({event})
         })
     }
     
