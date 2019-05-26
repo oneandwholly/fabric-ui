@@ -30,7 +30,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-function SimpleTable() {
+function SimpleTable(props) {
   const classes = useStyles();
 
   return (
@@ -45,8 +45,8 @@ function SimpleTable() {
         </TableHead>
         <TableBody>
         {
-              Object.keys(this.props.podStatus).map(podName => {
-                const lastEvent = this.props.podStatus[podName][this.props.podStatus[podName].length-1]
+              Object.keys(props.podStatus).map(podName => {
+                const lastEvent = props.podStatus[podName][props.podStatus[podName].length-1]
                 const status = lastEvent.object.status
                 const phase = status.phase
                 const state = status.containerStatuses ? Object.keys(status.containerStatuses[0].state)[0] : null
