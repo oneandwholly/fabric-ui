@@ -3,6 +3,20 @@ import axios from 'axios';
 import socket from './socket'
 import Table from './Table'
 
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
+}));
+
+const classes = useStyles();
+
 export default class extends Component {
     state = {
         podStatus: {}
@@ -49,7 +63,7 @@ export default class extends Component {
         return (
             <div>
                 <Table podStatus={this.state.podStatus}/>
-                <button 
+                <Button 
                     onClick={async () => {
                         try {
                             const res = await axios.post('/api/deployment/fib-calculator')
@@ -58,10 +72,11 @@ export default class extends Component {
                             console.log({ err })
                         }
                     }}
+                    variant="contained" className={classes.button}
                 >
-                    deploy
-                </button>
-                <button 
+                    Deploy
+                </Button>
+                <Button 
                     onClick={async () => {
                         try {
                             const res = await axios.delete('/api/deployment/fib-calculator')
@@ -70,9 +85,10 @@ export default class extends Component {
                             console.log({ err })
                         }
                     }}
+                    variant="contained" color="secondary" className={classes.button}
                 >
-                    delete
-                </button>
+                    Destroy
+                </Button>
             </div>
         );
     }

@@ -7,6 +7,7 @@ import TestComponent from './TestComponent'
 function App() {
   return (
     <div className="App">
+      <div>Cluster Status</div>
       <header className="App-header">
         <TestComponent />
       </header>
