@@ -55,7 +55,7 @@ export default class extends Component {
                     const state = status.containerStatuses ? Object.keys(status.containerStatuses[0].state)[0] : null
                     return <div>{podName}: {state ? state : phase}</div>
                 })}
-                <Table />
+                <Table podStatus={this.state.podStatus}/>
                 <button 
                     onClick={async () => {
                         try {

@@ -38,25 +38,27 @@ function SimpleTable() {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Pod Name</TableCell>
+            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">...</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
+        {
+              Object.keys(this.props.podStatus).map(podName => {
+                const lastEvent = this.props.podStatus[podName][this.props.podStatus[podName].length-1]
+                const status = lastEvent.object.status
+                const phase = status.phase
+                const state = status.containerStatuses ? Object.keys(status.containerStatuses[0].state)[0] : null
+                return <TableRow key={podName}>
+                    <TableCell component="th" scope="row">
+                        {podName}
+                    </TableCell>
+                    <TableCell align="right">{state ? state : phase}</TableCell>
+                    </TableRow>
+            })
+          }
+          
         </TableBody>
       </Table>
     </Paper>
