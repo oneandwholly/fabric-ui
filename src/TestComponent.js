@@ -10,7 +10,7 @@ export default class extends Component {
         const res = await axios.get('/api/status/pods/current')
         console.log({ res })
         this.setState({
-            podStatus: res.data.podStatus
+            podStatus: res.data.data.podStatus
         })
     }
     
